@@ -104,6 +104,8 @@
   .contagem__item{display:flex;flex-direction:column;align-items:flex-start;min-width:4.5rem}
   .contagem__num{font-family:var(--serif);font-weight:500;font-size:clamp(2.5rem,6vw,3.5rem);line-height:1;color:var(--acento)}
   .contagem__rotulo{margin-top:.35rem;font-size:.9375rem;font-weight:600;color:var(--suave);text-transform:uppercase;letter-spacing:.04em}
+  .rodape__contagem{margin:0 0 3rem}
+  .contagem__titulo{margin:0 0 .75rem;font-size:.9375rem;font-weight:600;color:var(--suave);text-transform:uppercase;letter-spacing:.04em}
 
   /* ---------- Confirmação ---------- */
   .faixa{background:var(--nevoa)}
@@ -312,23 +314,18 @@
       </form>
     </section>
   </div>
+</main>
 
-  <section class="secao" id="contagem" aria-labelledby="t-contagem">
-    <div class="secao__cab">
-      <span class="secao__par" aria-hidden="true">§ 4º</span>
-      <h2 id="t-contagem">A contagem regressiva</h2>
-    </div>
-    <p class="secao__intro" id="contagem-intro">Faltam:</p>
+<footer class="rodape">
+  <div class="rodape__contagem">
+    <p class="contagem__titulo" id="contagem-intro">Faltam</p>
     <div class="contagem" id="contagem-numeros" aria-live="polite">
       <div class="contagem__item"><span class="contagem__num" id="cnt-dias">0</span><span class="contagem__rotulo">dias</span></div>
       <div class="contagem__item"><span class="contagem__num" id="cnt-horas">00</span><span class="contagem__rotulo">horas</span></div>
       <div class="contagem__item"><span class="contagem__num" id="cnt-min">00</span><span class="contagem__rotulo">minutos</span></div>
       <div class="contagem__item"><span class="contagem__num" id="cnt-seg">00</span><span class="contagem__rotulo">segundos</span></div>
     </div>
-  </section>
-</main>
-
-<footer class="rodape">
+  </div>
   <div class="rodape__texto">
     <p class="rodape__termos">Nestes termos, aguardo a sua presença.</p>
     <p class="rodape__local">Porto Alegre, 16 de janeiro de 2027.</p>
