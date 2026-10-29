@@ -7,7 +7,7 @@
 <meta name="description" content="Formatura em Direito pela PUCRS de Tiago Brinckmann, 16 de janeiro de 2027. Programação, traje e confirmação de presença.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400..700;1,400..700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
   :root{
     --noite:#0E1B33;      /* fundo da capa, azul-marinho */
@@ -21,6 +21,7 @@
     --tinta:#141B2B;
     --suave:#536075;
     --claro:#F1F4FA;
+    --serif-titulo:"Bodoni Moda","Bodoni 72","Didot",Georgia,serif;
     --serif:"Lora","Georgia","Times New Roman",serif;
     --sans:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
   }
@@ -35,11 +36,11 @@
   .capa{position:relative;overflow:hidden;background:var(--noite);color:var(--claro);
     min-height:min(100svh,58rem);display:flex;align-items:flex-end}
   .capa :focus-visible{outline-color:var(--claro)}
-  .capa__par{position:absolute;right:-.08em;bottom:-.32em;font-family:var(--serif);font-weight:400;
+  .capa__par{position:absolute;right:-.08em;bottom:-.32em;font-family:var(--serif-titulo);font-weight:400;
     font-size:clamp(26rem,78vw,56rem);line-height:1;color:var(--noite-2);pointer-events:none;user-select:none}
   .capa__corpo{position:relative;width:100%;max-width:68rem;margin:0 auto;padding:6rem 1.5rem 3.5rem}
   .capa__curso{margin:0 0 1.25rem;font-size:1rem;font-weight:500;letter-spacing:.01em;color:#C3CEE2}
-  .capa__nome{margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(2.5rem,calc((100vw - 3rem) / 6.1),10.5rem);
+  .capa__nome{margin:0;font-family:var(--serif-titulo);font-weight:500;font-size:clamp(2.5rem,calc((100vw - 3rem) / 6.1),10.5rem);
     line-height:.9;letter-spacing:-.015em}
   .capa__nome span{display:block}
   .capa__nome span + span{padding-left:.42em}
@@ -62,8 +63,8 @@
 
   .secao{max-width:68rem;margin:0 auto;padding:4.5rem 1.5rem;display:grid;grid-template-columns:minmax(0,1fr)}
   .secao__cab{display:flex;align-items:baseline;gap:.75rem;margin-bottom:1.75rem}
-  .secao__par{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--acento);white-space:nowrap}
-  .secao h2{margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4.4vw,2.75rem);line-height:1.1;letter-spacing:-.01em}
+  .secao__par{font-family:var(--serif-titulo);font-style:italic;font-size:1.5rem;color:var(--acento);white-space:nowrap}
+  .secao h2{margin:0;font-family:var(--serif-titulo);font-weight:500;font-size:clamp(2rem,4.4vw,2.75rem);line-height:1.1;letter-spacing:-.01em}
   .secao__intro{margin:0 0 2rem;max-width:58ch;color:var(--suave)}
   @media (min-width:960px){
     .secao{grid-template-columns:9rem minmax(0,46rem);column-gap:2.5rem}
@@ -80,7 +81,7 @@
   .evento:last-child{padding-bottom:.25rem}
   .evento::before{content:"";position:absolute;left:-.5625rem;top:.55rem;width:1rem;height:1rem;border-radius:50%;
     background:var(--papel);border:3px solid var(--acento)}
-  .evento h3{margin:0 0 .25rem;font-family:var(--serif);font-weight:500;font-size:1.75rem;line-height:1.25}
+  .evento h3{margin:0 0 .25rem;font-family:var(--serif-titulo);font-weight:500;font-size:1.75rem;line-height:1.25}
   .evento > p{margin:0 0 1rem;color:var(--suave);max-width:52ch}
   .detalhes{margin:0;display:grid;grid-template-columns:minmax(0,1fr);gap:.75rem 2.5rem}
   @media (min-width:560px){.detalhes{grid-template-columns:auto minmax(0,1fr)}}
@@ -92,12 +93,12 @@
   .lacuna{display:inline-block;vertical-align:bottom;height:1.5em;border-bottom:1.5px solid var(--tinta);width:6.5rem}
   .lacuna--longa{width:min(15rem,100%)}
   .nota{margin:2rem 0 0;color:var(--suave);max-width:58ch}
-  .link{display:inline-block;margin-top:.75rem;color:var(--acento);font-weight:600;text-underline-offset:.22em;text-decoration-thickness:1.5px}
+  .link{display:inline-block;margin-top:2.5rem;color:var(--acento);font-weight:600;text-underline-offset:.22em;text-decoration-thickness:1.5px}
   .link:hover{color:var(--acento-escuro)}
 
   /* Traje */
   .traje{border-top:2px solid var(--acento);padding-top:1.25rem;max-width:36rem}
-  .traje__nome{margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(2.5rem,6vw,3.5rem);line-height:1.05;letter-spacing:-.01em}
+  .traje__nome{margin:0;font-family:var(--serif-titulo);font-weight:500;font-size:clamp(2.5rem,6vw,3.5rem);line-height:1.05;letter-spacing:-.01em}
   .traje__onde{margin:.5rem 0 0;font-weight:600;color:var(--suave)}
   .traje__desc{margin:.75rem 0 0;color:var(--suave)}
 
@@ -160,7 +161,7 @@
 
   .pronto{background:var(--papel);border-left:4px solid var(--acento);border-radius:0 .75rem .75rem 0;padding:1.5rem 1.5rem 1.6rem;max-width:40rem}
   .pronto:focus{outline:none}
-  .pronto h3{margin:0 0 .5rem;font-family:var(--serif);font-weight:500;font-size:1.75rem;line-height:1.2}
+  .pronto h3{margin:0 0 .5rem;font-family:var(--serif-titulo);font-weight:500;font-size:1.75rem;line-height:1.2}
   .pronto p{margin:0 0 .75rem;max-width:56ch}
   .mensagem{margin:1rem 0;padding:1rem 1.1rem;background:var(--nevoa);border-radius:.5rem;font:inherit;font-size:.9375rem;
     line-height:1.55;white-space:pre-wrap;word-break:break-word;max-height:20rem;overflow:auto}
