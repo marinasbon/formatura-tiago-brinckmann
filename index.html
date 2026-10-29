@@ -99,6 +99,12 @@
   .traje__onde{margin:.5rem 0 0;font-weight:600;color:var(--suave)}
   .traje__desc{margin:.75rem 0 0;color:var(--suave)}
 
+  /* Contagem regressiva */
+  .contagem{display:flex;flex-wrap:wrap;gap:1.5rem 2.5rem}
+  .contagem__item{display:flex;flex-direction:column;align-items:flex-start;min-width:4.5rem}
+  .contagem__num{font-family:var(--serif);font-weight:500;font-size:clamp(2.5rem,6vw,3.5rem);line-height:1;color:var(--acento)}
+  .contagem__rotulo{margin-top:.35rem;font-size:.9375rem;font-weight:600;color:var(--suave);text-transform:uppercase;letter-spacing:.04em}
+
   /* ---------- Confirmação ---------- */
   .faixa{background:var(--nevoa)}
   .form{display:grid;gap:2rem;max-width:40rem}
@@ -306,6 +312,20 @@
       </form>
     </section>
   </div>
+
+  <section class="secao" id="contagem" aria-labelledby="t-contagem">
+    <div class="secao__cab">
+      <span class="secao__par" aria-hidden="true">§ 4º</span>
+      <h2 id="t-contagem">A contagem regressiva</h2>
+    </div>
+    <p class="secao__intro" id="contagem-intro">Faltam:</p>
+    <div class="contagem" id="contagem-numeros" aria-live="polite">
+      <div class="contagem__item"><span class="contagem__num" id="cnt-dias">0</span><span class="contagem__rotulo">dias</span></div>
+      <div class="contagem__item"><span class="contagem__num" id="cnt-horas">00</span><span class="contagem__rotulo">horas</span></div>
+      <div class="contagem__item"><span class="contagem__num" id="cnt-min">00</span><span class="contagem__rotulo">minutos</span></div>
+      <div class="contagem__item"><span class="contagem__num" id="cnt-seg">00</span><span class="contagem__rotulo">segundos</span></div>
+    </div>
+  </section>
 </main>
 
 <footer class="rodape">
@@ -674,6 +694,36 @@ const CONFIG = {
   preencherCampos();
   renderAcomps(null);
   enviar.href = linkWhatsApp(montarMensagem());
+
+  /* ---------- Contagem regressiva ---------- */
+  const DATA_FORMATURA = new Date(2027, 0, 16, 0, 0, 0);
+  const introContagem = document.getElementById("contagem-intro");
+  const numerosContagem = document.getElementById("contagem-numeros");
+  const elDias = document.getElementById("cnt-dias");
+  const elHoras = document.getElementById("cnt-horas");
+  const elMin = document.getElementById("cnt-min");
+  const elSeg = document.getElementById("cnt-seg");
+  let intervaloContagem = null;
+
+  function doisDigitos(n) { return String(n).padStart(2, "0"); }
+
+  function atualizarContagem() {
+    const diff = DATA_FORMATURA.getTime() - Date.now();
+    if (diff <= 0) {
+      introContagem.textContent = "Chegou o grande dia!";
+      numerosContagem.hidden = true;
+      if (intervaloContagem) clearInterval(intervaloContagem);
+      return;
+    }
+    const seg = Math.floor(diff / 1000);
+    elDias.textContent = Math.floor(seg / 86400);
+    elHoras.textContent = doisDigitos(Math.floor((seg % 86400) / 3600));
+    elMin.textContent = doisDigitos(Math.floor((seg % 3600) / 60));
+    elSeg.textContent = doisDigitos(seg % 60);
+  }
+
+  atualizarContagem();
+  intervaloContagem = setInterval(atualizarContagem, 1000);
 })();
 </script>
 </body>
