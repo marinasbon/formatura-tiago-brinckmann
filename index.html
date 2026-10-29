@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Formatura de Tiago Brinckmann</title>
+<meta name="description" content="Formatura em Direito pela PUCRS de Tiago Brinckmann, 16 de janeiro de 2027. Programação, traje e confirmação de presença.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --noite:#0E1B33;      /* fundo da capa, azul-marinho */
+    --noite-2:#172A4C;    /* o § da capa */
+    --acento:#1C3A6E;     /* marinho de destaque */
+    --acento-escuro:#12284F;
+    --erro:#A8261E;       /* só para avisos do formulário */
+    --nevoa:#EDF1F8;      /* faixa da confirmação */
+    --linha:#C9D3E4;
+    --papel:#FFFFFF;
+    --tinta:#141B2B;
+    --suave:#536075;
+    --claro:#F1F4FA;
+    --serif:"Bodoni Moda","Bodoni 72","Didot",Georgia,serif;
+    --sans:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  }
+  *,*::before,*::after{box-sizing:border-box}
+  html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+  body{margin:0;background:var(--papel);color:var(--tinta);font-family:var(--sans);font-size:1.0625rem;line-height:1.6}
+  img,svg{display:block}
+  .sr{position:absolute!important;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
+  :focus-visible{outline:3px solid var(--acento);outline-offset:3px}
+
+  /* ---------- Capa ---------- */
+  .capa{position:relative;overflow:hidden;background:var(--noite);color:var(--claro);
+    min-height:min(100svh,58rem);display:flex;align-items:flex-end}
+  .capa :focus-visible{outline-color:var(--claro)}
+  .capa__par{position:absolute;right:-.08em;bottom:-.32em;font-family:var(--serif);font-weight:400;
+    font-size:clamp(26rem,78vw,56rem);line-height:1;color:var(--noite-2);pointer-events:none;user-select:none}
+  .capa__corpo{position:relative;width:100%;max-width:68rem;margin:0 auto;padding:6rem 1.5rem 3.5rem}
+  .capa__curso{margin:0 0 1.25rem;font-size:1rem;font-weight:500;letter-spacing:.01em;color:#C3CEE2}
+  .capa__nome{margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(2.5rem,calc((100vw - 3rem) / 6.1),10.5rem);
+    line-height:.9;letter-spacing:-.015em}
+  .capa__nome span{display:block}
+  .capa__nome span + span{padding-left:.42em}
+  .capa__data{text-wrap:balance;margin:2rem 0 .25rem;font-family:var(--serif);font-style:italic;font-size:clamp(1.375rem,3.4vw,1.75rem);line-height:1.3}
+  .capa__eventos{margin:0 0 2.25rem;color:#C3CEE2}
+
+  .botao{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:3.125rem;
+    padding:.8rem 1.6rem;border-radius:999px;border:2px solid transparent;font:600 1.0625rem/1.2 var(--sans);
+    text-decoration:none;cursor:pointer;transition:background-color .15s,color .15s,border-color .15s}
+  .botao--claro{background:var(--claro);color:var(--noite)}
+  .botao--claro:hover{background:#fff}
+  .botao--acento{background:var(--acento);color:#fff}
+  .botao--acento:hover{background:var(--acento-escuro)}
+  .botao--contorno{background:transparent;color:var(--acento);border-color:var(--acento)}
+  .botao--contorno:hover{background:var(--papel)}
+
+  /* ---------- Seções ---------- */
+  .abertura{max-width:68rem;margin:0 auto;padding:4.5rem 1.5rem 0}
+  .abertura p{margin:0;max-width:30ch;font-family:var(--serif);font-size:clamp(1.5rem,3.6vw,2.125rem);line-height:1.3;font-weight:400}
+
+  .secao{max-width:68rem;margin:0 auto;padding:4.5rem 1.5rem;display:grid;grid-template-columns:minmax(0,1fr)}
+  .secao__cab{display:flex;align-items:baseline;gap:.75rem;margin-bottom:1.75rem}
+  .secao__par{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--acento);white-space:nowrap}
+  .secao h2{margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4.4vw,2.75rem);line-height:1.1;letter-spacing:-.01em}
+  .secao__intro{margin:0 0 2rem;max-width:58ch;color:var(--suave)}
+  @media (min-width:960px){
+    .secao{grid-template-columns:9rem minmax(0,46rem);column-gap:2.5rem}
+    .secao > *{grid-column:2}
+    .secao__cab{display:contents}
+    .secao__par{grid-column:1;grid-row:1;justify-self:end;align-self:baseline;font-size:1.75rem;line-height:1.1;padding-top:.35rem}
+    .secao h2{grid-column:2;grid-row:1;margin-bottom:1.75rem}
+    .abertura{padding-left:calc(1.5rem + 11.5rem)}
+  }
+
+  /* Programação */
+  .agenda{list-style:none;margin:0;padding:0;border-left:2px solid var(--linha)}
+  .evento{position:relative;padding:0 0 2.5rem 2rem}
+  .evento:last-child{padding-bottom:.25rem}
+  .evento::before{content:"";position:absolute;left:-.5625rem;top:.55rem;width:1rem;height:1rem;border-radius:50%;
+    background:var(--papel);border:3px solid var(--acento)}
+  .evento h3{margin:0 0 .25rem;font-family:var(--serif);font-weight:500;font-size:1.75rem;line-height:1.25}
+  .evento > p{margin:0 0 1rem;color:var(--suave);max-width:52ch}
+  .detalhes{margin:0;display:grid;grid-template-columns:minmax(0,1fr);gap:.75rem 2.5rem}
+  @media (min-width:560px){.detalhes{grid-template-columns:auto minmax(0,1fr)}}
+  .detalhes dt{font-size:.875rem;font-weight:600;color:var(--suave)}
+  .detalhes dd{margin:.125rem 0 0;font-weight:500}
+  .detalhes dd a{color:var(--acento);text-underline-offset:.2em}
+  .lacuna{display:inline-block;vertical-align:bottom;height:1.5em;border-bottom:1.5px solid var(--tinta);width:6.5rem}
+  .lacuna--longa{width:min(15rem,100%)}
+  .nota{margin:2rem 0 0;color:var(--suave);max-width:58ch}
+  .link{display:inline-block;margin-top:.75rem;color:var(--acento);font-weight:600;text-underline-offset:.22em;text-decoration-thickness:1.5px}
+  .link:hover{color:var(--acento-escuro)}
+
+  /* Traje */
+  .traje{border-top:2px solid var(--acento);padding-top:1.25rem;max-width:36rem}
+  .traje__nome{margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(2.5rem,6vw,3.5rem);line-height:1.05;letter-spacing:-.01em}
+  .traje__onde{margin:.5rem 0 0;font-weight:600;color:var(--suave)}
+
+  /* ---------- Confirmação ---------- */
+  .faixa{background:var(--nevoa)}
+  .form{display:grid;gap:2rem;max-width:40rem}
+  .campo label,.grupo legend{display:block;font-weight:600;margin-bottom:.5rem}
+  .opcional{font-weight:400;color:var(--suave)}
+  .campo input,.campo textarea{width:100%;font:inherit;color:var(--tinta);background:var(--papel);
+    border:1px solid var(--linha);border-bottom:2px solid var(--tinta);border-radius:.375rem .375rem 0 0;padding:.7rem .85rem}
+  .campo textarea{resize:vertical;min-height:6rem}
+  .campo input:focus,.campo textarea:focus{outline:none;border-bottom-color:var(--acento);box-shadow:0 2px 0 var(--acento)}
+  .campo input:focus-visible,.campo textarea:focus-visible{outline:3px solid var(--acento);outline-offset:2px}
+  input[aria-invalid="true"],textarea[aria-invalid="true"]{border-bottom-color:var(--erro)!important;background:#FBF4F3!important}
+  .grupo{border:0;margin:0;padding:0;min-width:0}
+  .grupo legend{padding:0}
+  .opcoes{display:grid;grid-template-columns:1fr 1fr;gap:.75rem;max-width:26rem}
+  .opcao{position:relative;display:block;cursor:pointer}
+  .opcao input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+  .opcao span{display:flex;align-items:center;justify-content:center;min-height:3.125rem;padding:.6rem 1rem;
+    border:1.5px solid var(--linha);border-radius:.5rem;background:var(--papel);font-weight:600;transition:background-color .15s,border-color .15s,color .15s}
+  .opcao:hover span{border-color:var(--acento)}
+  .opcao input:checked + span{background:var(--acento);border-color:var(--acento);color:#fff}
+  .opcao input:focus-visible + span{outline:3px solid var(--acento);outline-offset:3px}
+  .grupo[aria-invalid="true"] .opcao span{border-color:var(--erro)}
+  .ajuda{margin:0 0 1rem;color:var(--suave);font-size:.9375rem;max-width:56ch}
+  .erro{margin:.5rem 0 0;color:var(--erro);font-weight:600;font-size:.9375rem}
+
+  .acomps{list-style:none;margin:0 0 1rem;padding:0;display:grid;gap:1rem}
+  .acomps:empty{display:none}
+  .acomp{background:var(--papel);border:1px solid var(--linha);border-radius:.75rem;padding:1rem 1rem 1.1rem}
+  .acomp__topo{display:flex;align-items:baseline;justify-content:space-between;gap:1rem;margin-bottom:.5rem}
+  .acomp__topo label{margin:0}
+  .remover{background:none;border:0;padding:.25rem 0;font:600 .9375rem var(--sans);color:var(--acento);cursor:pointer;text-decoration:underline;text-underline-offset:.2em}
+  .remover:hover{color:var(--acento-escuro)}
+  .acomp .campo input{background:#FCFDFF}
+  .acomp__ev{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin-top:.85rem}
+  .acomp__ev > span{font-size:.9375rem;color:var(--suave);margin-right:.25rem}
+  .chip{position:relative;cursor:pointer}
+  .chip input{position:absolute;opacity:0;inset:0;margin:0;cursor:pointer}
+  .chip span{display:inline-flex;align-items:center;gap:.4rem;min-height:2.5rem;padding:.4rem .95rem;border-radius:999px;
+    border:1.5px solid var(--linha);background:var(--papel);font-weight:600;font-size:.9375rem;transition:background-color .15s,border-color .15s}
+  .chip span::before{content:"";width:.95rem;height:.95rem;border-radius:.2rem;border:1.5px solid var(--suave);background:#fff;flex:none}
+  .chip input:checked + span{background:var(--nevoa);border-color:var(--acento);color:var(--acento-escuro)}
+  .chip input:checked + span::before{background:var(--acento) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12'%3E%3Cpath d='M2.5 6.2l2.3 2.3 4.7-5' fill='none' stroke='white' stroke-width='1.8' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E") center/100% no-repeat;border-color:var(--acento)}
+  .chip input:focus-visible + span{outline:3px solid var(--acento);outline-offset:2px}
+
+  .envio{display:grid;gap:.75rem;justify-items:start}
+  .envio .botao{width:100%;max-width:26rem}
+  .alerta{margin:0;color:var(--erro);font-weight:600}
+  .alerta:empty{display:none}
+
+  .pronto{background:var(--papel);border-left:4px solid var(--acento);border-radius:0 .75rem .75rem 0;padding:1.5rem 1.5rem 1.6rem;max-width:40rem}
+  .pronto:focus{outline:none}
+  .pronto h3{margin:0 0 .5rem;font-family:var(--serif);font-weight:500;font-size:1.75rem;line-height:1.2}
+  .pronto p{margin:0 0 .75rem;max-width:56ch}
+  .mensagem{margin:1rem 0;padding:1rem 1.1rem;background:var(--nevoa);border-radius:.5rem;font:inherit;font-size:.9375rem;
+    line-height:1.55;white-space:pre-wrap;word-break:break-word;max-height:20rem;overflow:auto}
+  .pronto__acoes{display:flex;flex-wrap:wrap;gap:.75rem;align-items:center}
+  .status{margin:0;font-weight:600;color:var(--acento-escuro)}
+
+  /* ---------- Rodapé ---------- */
+  .rodape{max-width:68rem;margin:0 auto;padding:4.5rem 1.5rem 5rem}
+  .rodape__texto{max-width:24rem}
+  .rodape p{margin:0}
+  .rodape__termos{font-family:var(--serif);font-size:1.5rem;line-height:1.3}
+  .rodape__local{margin-top:.5rem!important;color:var(--suave)}
+  .rodape__assinatura{margin-top:3rem!important;padding-top:.6rem;border-top:1.5px solid var(--tinta);
+    font-family:var(--serif);font-style:italic;font-size:1.375rem}
+  .rodape__cargo{color:var(--suave);font-size:.9375rem}
+  @media (min-width:960px){.rodape{padding-left:calc(1.5rem + 11.5rem)}}
+
+  /* ---------- Movimento ---------- */
+  @media (prefers-reduced-motion:no-preference){
+    .capa__par{animation:surge 1.4s cubic-bezier(.2,.7,.2,1) both}
+    .capa__nome span{animation:sobe .9s cubic-bezier(.2,.7,.2,1) both}
+    .capa__nome span + span{animation-delay:.12s}
+    .capa__curso,.capa__data,.capa__eventos,.capa .botao{animation:aparece .8s ease .45s both}
+    .pronto{animation:aparece .35s ease both}
+  }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
+  @keyframes surge{from{opacity:0;transform:translateY(6%)}to{opacity:1;transform:none}}
+  @keyframes sobe{from{opacity:0;transform:translateY(.25em)}to{opacity:1;transform:none}}
+  @keyframes aparece{from{opacity:0}to{opacity:1}}
+</style>
+</head>
+<body>
+
+<header class="capa">
+  <span class="capa__par" aria-hidden="true">§</span>
+  <div class="capa__corpo">
+    <p class="capa__curso">Formatura em Direito pela PUCRS</p>
+    <h1 class="capa__nome"><span>Tiago</span> <span>Brinckmann</span></h1>
+    <p class="capa__data"><time datetime="2027-01-16">Sábado, 16 de janeiro de 2027</time></p>
+    <p class="capa__eventos">Colação de grau e festa de formatura</p>
+    <a class="botao botao--claro" href="#confirmar">Confirmar presença</a>
+  </div>
+</header>
+
+<main>
+  <div class="abertura">
+    <p>Depois de muita doutrina, jurisprudência e Vade Mecum, chegou a hora de comemorar. Quero muito ter você comigo nesse dia.</p>
+  </div>
+
+  <section class="secao" id="programacao" aria-labelledby="t-programacao">
+    <div class="secao__cab">
+      <span class="secao__par" aria-hidden="true">§ 1º</span>
+      <h2 id="t-programacao">A programação</h2>
+    </div>
+
+    <ol class="agenda">
+      <li class="evento" data-evento="colacao">
+        <h3>Colação de grau</h3>
+        <p>A cerimônia oficial em que recebo o grau de bacharel em Direito.</p>
+        <dl class="detalhes">
+          <div><dt>Horário</dt><dd data-campo="horario"></dd></div>
+          <div><dt>Local</dt><dd data-campo="local"></dd></div>
+        </dl>
+      </li>
+      <li class="evento" data-evento="festa">
+        <h3>Festa de formatura</h3>
+        <p>A noite de celebração, com jantar, música e pista de dança.</p>
+        <dl class="detalhes">
+          <div><dt>Horário</dt><dd data-campo="horario"></dd></div>
+          <div><dt>Local</dt><dd data-campo="local"></dd></div>
+        </dl>
+      </li>
+    </ol>
+
+    <p class="nota" id="nota-lacunas">Os horários e os locais ainda serão definidos. Assim que estiverem confirmados, eles aparecem aqui.</p>
+    <a class="link" id="agenda" href="#" target="_blank" rel="noopener">Salvar 16 de janeiro na agenda do Google</a>
+  </section>
+
+  <section class="secao" id="traje" aria-labelledby="t-traje">
+    <div class="secao__cab">
+      <span class="secao__par" aria-hidden="true">§ 2º</span>
+      <h2 id="t-traje">O traje</h2>
+    </div>
+
+    <div class="traje">
+      <p class="traje__nome">Esporte fino</p>
+      <p class="traje__onde">Na colação de grau e na festa de formatura</p>
+    </div>
+  </section>
+
+  <div class="faixa">
+    <section class="secao" id="confirmar" aria-labelledby="t-confirmar">
+      <div class="secao__cab">
+        <span class="secao__par" aria-hidden="true">§ 3º</span>
+        <h2 id="t-confirmar">Confirmação de presença</h2>
+      </div>
+      <p class="secao__intro">Diga se você vai à colação, à festa ou aos dois, e quem vai com você. A confirmação chega ao Tiago por WhatsApp.<span id="prazo" hidden> Confirme até <strong></strong>.</span></p>
+
+      <form class="form" id="rsvp" novalidate>
+        <div class="campo">
+          <label for="nome">Seu nome completo</label>
+          <input id="nome" name="nome" type="text" autocomplete="name" aria-describedby="nome-erro" required>
+          <p class="erro" id="nome-erro" hidden></p>
+        </div>
+
+        <fieldset class="grupo" id="grupo-colacao" aria-describedby="colacao-erro">
+          <legend>Você vai à colação de grau?</legend>
+          <div class="opcoes">
+            <label class="opcao"><input type="radio" name="colacao" value="sim"><span>Vou</span></label>
+            <label class="opcao"><input type="radio" name="colacao" value="nao"><span>Não vou</span></label>
+          </div>
+          <p class="erro" id="colacao-erro" hidden></p>
+        </fieldset>
+
+        <fieldset class="grupo" id="grupo-festa" aria-describedby="festa-erro">
+          <legend>Você vai à festa de formatura?</legend>
+          <div class="opcoes">
+            <label class="opcao"><input type="radio" name="festa" value="sim"><span>Vou</span></label>
+            <label class="opcao"><input type="radio" name="festa" value="nao"><span>Não vou</span></label>
+          </div>
+          <p class="erro" id="festa-erro" hidden></p>
+        </fieldset>
+
+        <fieldset class="grupo">
+          <legend>Acompanhantes</legend>
+          <p class="ajuda">Inclua cada pessoa que vai com você e marque a quais eventos ela vai.</p>
+          <ol class="acomps" id="acomps"></ol>
+          <button type="button" class="botao botao--contorno" id="add-acomp">Adicionar acompanhante</button>
+        </fieldset>
+
+        <div class="campo">
+          <label for="recado">Recado para o Tiago <span class="opcional">(opcional)</span></label>
+          <textarea id="recado" name="recado" rows="3"></textarea>
+        </div>
+
+        <div class="envio">
+          <a class="botao botao--acento" id="enviar" href="https://wa.me/" target="_blank" rel="noopener">Enviar confirmação pelo WhatsApp</a>
+          <p class="ajuda" id="ajuda-envio" style="margin:0">O WhatsApp abre com a mensagem pronta. Escolha o contato do Tiago e toque em enviar.</p>
+          <p class="alerta" id="alerta" role="alert"></p>
+        </div>
+
+        <div class="pronto" id="pronto" tabindex="-1" hidden>
+          <h3>Falta só enviar</h3>
+          <p>Sua mensagem está pronta no WhatsApp. A confirmação vale assim que você tocar em enviar por lá.</p>
+          <p>Se o WhatsApp não abriu, copie o texto abaixo e mande para o Tiago por onde preferir.</p>
+          <pre class="mensagem" id="mensagem"></pre>
+          <div class="pronto__acoes">
+            <button type="button" class="botao botao--contorno" id="copiar">Copiar mensagem</button>
+            <p class="status" id="status" role="status"></p>
+          </div>
+        </div>
+      </form>
+    </section>
+  </div>
+</main>
+
+<footer class="rodape">
+  <div class="rodape__texto">
+    <p class="rodape__termos">Nestes termos, aguardo a sua presença.</p>
+    <p class="rodape__local">Porto Alegre, 16 de janeiro de 2027.</p>
+    <p class="rodape__assinatura">Tiago Brinckmann</p>
+    <p class="rodape__cargo">Bacharel em Direito pela PUCRS</p>
+  </div>
+</footer>
+
+<script>
+/* =========================================================
+   Informações para preencher quando estiverem definidas.
+   Deixe "" para mostrar a lacuna em branco.
+   ========================================================= */
+const CONFIG = {
+  whatsapp: "",        // número do Tiago com DDI e DDD, só dígitos. Ex.: "5551999999999"
+  prazo: "",           // ex.: "20 de dezembro"
+  eventos: {
+    colacao: { horario: "", local: "", endereco: "" },
+    festa:   { horario: "", local: "", endereco: "" }
+  }
+};
+
+(function () {
+  "use strict";
+
+  /* ---------- Programação ---------- */
+  let temLacuna = false;
+  document.querySelectorAll(".evento").forEach(function (li) {
+    const ev = CONFIG.eventos[li.dataset.evento] || {};
+    li.querySelectorAll("dd[data-campo]").forEach(function (dd) {
+      const campo = dd.dataset.campo;
+      const valor = (ev[campo] || "").trim();
+      dd.textContent = "";
+      if (!valor) {
+        temLacuna = true;
+        const l = document.createElement("span");
+        l.className = "lacuna" + (campo === "local" ? " lacuna--longa" : "");
+        const sr = document.createElement("span");
+        sr.className = "sr";
+        sr.textContent = "a definir";
+        l.appendChild(sr);
+        dd.appendChild(l);
+        return;
+      }
+      if (campo === "local") {
+        const nome = document.createElement("span");
+        nome.textContent = valor;
+        dd.appendChild(nome);
+        const end = (ev.endereco || "").trim();
+        if (end) {
+          dd.appendChild(document.createElement("br"));
+          const a = document.createElement("a");
+          a.href = "https://www.google.com/maps/search/?api=1&query=" + encodeURIComponent(valor + ", " + end);
+          a.target = "_blank";
+          a.rel = "noopener";
+          a.textContent = end;
+          dd.appendChild(a);
+        }
+      } else {
+        dd.textContent = valor;
+      }
+    });
+  });
+  document.getElementById("nota-lacunas").hidden = !temLacuna;
+
+  const agenda = new URL("https://calendar.google.com/calendar/render");
+  agenda.searchParams.set("action", "TEMPLATE");
+  agenda.searchParams.set("text", "Formatura do Tiago Brinckmann");
+  agenda.searchParams.set("dates", "20270116/20270117");
+  agenda.searchParams.set("details", "Colação de grau e festa de formatura em Direito pela PUCRS. Traje: esporte fino.");
+  document.getElementById("agenda").href = agenda.toString();
+
+  if (CONFIG.prazo.trim()) {
+    const p = document.getElementById("prazo");
+    p.querySelector("strong").textContent = CONFIG.prazo.trim();
+    p.hidden = false;
+  }
+  if (CONFIG.whatsapp.trim()) {
+    document.getElementById("ajuda-envio").textContent = "O WhatsApp abre na conversa com o Tiago, com a mensagem pronta. É só tocar em enviar.";
+  }
+
+  /* ---------- Confirmação ---------- */
+  const CHAVE = "formatura-tiago-confirmacao";
+  const form = document.getElementById("rsvp");
+  const nomeInput = document.getElementById("nome");
+  const recadoInput = document.getElementById("recado");
+  const lista = document.getElementById("acomps");
+  const enviar = document.getElementById("enviar");
+  const alerta = document.getElementById("alerta");
+  const pronto = document.getElementById("pronto");
+  const mensagemEl = document.getElementById("mensagem");
+  const statusEl = document.getElementById("status");
+
+  let estado = { nome: "", colacao: null, festa: null, acomp: [], recado: "" };
+  let tentouEnviar = false;
+  let seq = 0;
+
+  try {
+    const salvo = JSON.parse(localStorage.getItem(CHAVE) || "null");
+    if (salvo && typeof salvo === "object") {
+      estado.nome = String(salvo.nome || "");
+      estado.colacao = salvo.colacao === "sim" || salvo.colacao === "nao" ? salvo.colacao : null;
+      estado.festa = salvo.festa === "sim" || salvo.festa === "nao" ? salvo.festa : null;
+      estado.recado = String(salvo.recado || "");
+      estado.acomp = Array.isArray(salvo.acomp) ? salvo.acomp.slice(0, 30).map(function (a) {
+        return { id: ++seq, nome: String((a && a.nome) || ""), colacao: !!(a && a.colacao), festa: !!(a && a.festa) };
+      }) : [];
+    }
+  } catch (e) { /* sem armazenamento: segue em branco */ }
+
+  function salvar() {
+    try {
+      localStorage.setItem(CHAVE, JSON.stringify({
+        nome: estado.nome, colacao: estado.colacao, festa: estado.festa, recado: estado.recado,
+        acomp: estado.acomp.map(function (a) { return { nome: a.nome, colacao: a.colacao, festa: a.festa }; })
+      }));
+    } catch (e) { /* ignora */ }
+  }
+
+  function preencherCampos() {
+    nomeInput.value = estado.nome;
+    recadoInput.value = estado.recado;
+    ["colacao", "festa"].forEach(function (k) {
+      form.querySelectorAll('input[name="' + k + '"]').forEach(function (r) { r.checked = r.value === estado[k]; });
+    });
+  }
+
+  function renderAcomps(focoId) {
+    lista.textContent = "";
+    estado.acomp.forEach(function (a, i) {
+      const n = i + 1;
+      const li = document.createElement("li");
+      li.className = "acomp";
+      li.dataset.id = a.id;
+
+      const campo = document.createElement("div");
+      campo.className = "campo";
+      const topo = document.createElement("div");
+      topo.className = "acomp__topo";
+      const label = document.createElement("label");
+      label.htmlFor = "acomp-" + a.id;
+      label.textContent = "Acompanhante " + n;
+      const rm = document.createElement("button");
+      rm.type = "button";
+      rm.className = "remover";
+      rm.textContent = "Remover";
+      rm.setAttribute("aria-label", "Remover acompanhante " + n + (a.nome ? " (" + a.nome + ")" : ""));
+      rm.addEventListener("click", function () {
+        const idx = estado.acomp.findIndex(function (x) { return x.id === a.id; });
+        estado.acomp.splice(idx, 1);
+        const prox = estado.acomp[idx] || estado.acomp[idx - 1];
+        renderAcomps(prox ? prox.id : null);
+        if (!prox) document.getElementById("add-acomp").focus();
+        atualizar();
+      });
+      topo.appendChild(label);
+      topo.appendChild(rm);
+
+      const input = document.createElement("input");
+      input.type = "text";
+      input.id = "acomp-" + a.id;
+      input.autocomplete = "off";
+      input.placeholder = "Nome completo";
+      input.value = a.nome;
+      input.setAttribute("aria-describedby", "acomp-erro-" + a.id);
+      input.addEventListener("input", function () { a.nome = input.value; atualizar(); });
+      campo.appendChild(topo);
+      campo.appendChild(input);
+
+      const evs = document.createElement("div");
+      evs.className = "acomp__ev";
+      evs.setAttribute("role", "group");
+      evs.setAttribute("aria-label", "Eventos do acompanhante " + n);
+      const vai = document.createElement("span");
+      vai.textContent = "Vai à";
+      vai.setAttribute("aria-hidden", "true");
+      evs.appendChild(vai);
+      [["colacao", "Colação"], ["festa", "Festa"]].forEach(function (par) {
+        const chip = document.createElement("label");
+        chip.className = "chip";
+        const cb = document.createElement("input");
+        cb.type = "checkbox";
+        cb.checked = a[par[0]];
+        cb.addEventListener("change", function () { a[par[0]] = cb.checked; atualizar(); });
+        const sp = document.createElement("span");
+        sp.textContent = par[1];
+        chip.appendChild(cb);
+        chip.appendChild(sp);
+        evs.appendChild(chip);
+      });
+
+      const erro = document.createElement("p");
+      erro.className = "erro";
+      erro.id = "acomp-erro-" + a.id;
+      erro.hidden = true;
+
+      li.appendChild(campo);
+      li.appendChild(evs);
+      li.appendChild(erro);
+      lista.appendChild(li);
+    });
+    if (focoId != null) {
+      const alvo = document.getElementById("acomp-" + focoId);
+      if (alvo) alvo.focus();
+    }
+  }
+
+  document.getElementById("add-acomp").addEventListener("click", function () {
+    const a = {
+      id: ++seq,
+      nome: "",
+      colacao: estado.colacao !== "nao",
+      festa: estado.festa !== "nao"
+    };
+    estado.acomp.push(a);
+    renderAcomps(a.id);
+    atualizar();
+  });
+
+  nomeInput.addEventListener("input", function () { estado.nome = nomeInput.value; atualizar(); });
+  recadoInput.addEventListener("input", function () { estado.recado = recadoInput.value; atualizar(); });
+  form.querySelectorAll('input[type="radio"]').forEach(function (r) {
+    r.addEventListener("change", function () { estado[r.name] = r.value; atualizar(); });
+  });
+
+  function validar() {
+    const erros = [];
+    const nome = estado.nome.trim();
+    erros.push({ el: nomeInput, msgEl: document.getElementById("nome-erro"),
+      msg: nome ? "" : "Escreva seu nome para o Tiago saber quem está confirmando." });
+    erros.push({ el: document.getElementById("grupo-colacao"), msgEl: document.getElementById("colacao-erro"),
+      foco: form.querySelector('input[name="colacao"]'),
+      msg: estado.colacao ? "" : "Escolha se você vai à colação de grau." });
+    erros.push({ el: document.getElementById("grupo-festa"), msgEl: document.getElementById("festa-erro"),
+      foco: form.querySelector('input[name="festa"]'),
+      msg: estado.festa ? "" : "Escolha se você vai à festa de formatura." });
+    estado.acomp.forEach(function (a) {
+      let msg = "";
+      if (!a.nome.trim()) msg = "Escreva o nome do acompanhante ou remova esta pessoa.";
+      else if (!a.colacao && !a.festa) msg = "Marque ao menos um evento para " + a.nome.trim() + ".";
+      erros.push({ el: document.getElementById("acomp-" + a.id), msgEl: document.getElementById("acomp-erro-" + a.id), msg: msg });
+    });
+    return erros;
+  }
+
+  function mostrarErros(erros) {
+    erros.forEach(function (e) {
+      if (!e.el || !e.msgEl) return;
+      e.msgEl.textContent = e.msg;
+      e.msgEl.hidden = !e.msg;
+      if (e.msg) e.el.setAttribute("aria-invalid", "true");
+      else e.el.removeAttribute("aria-invalid");
+    });
+  }
+
+  function plural(n, um, varios) { return n + " " + (n === 1 ? um : varios); }
+
+  function montarMensagem() {
+    const vaiC = estado.colacao === "sim";
+    const vaiF = estado.festa === "sim";
+    const acomp = estado.acomp.filter(function (a) { return a.nome.trim(); });
+    const totC = (vaiC ? 1 : 0) + acomp.filter(function (a) { return a.colacao; }).length;
+    const totF = (vaiF ? 1 : 0) + acomp.filter(function (a) { return a.festa; }).length;
+    const l = [];
+    if (totC === 0 && totF === 0) {
+      l.push("Olá, Tiago! Infelizmente não vou conseguir ir à sua formatura (16/01).");
+    } else {
+      l.push("Olá, Tiago! Segue minha confirmação para a sua formatura (16/01).");
+    }
+    l.push("");
+    l.push("*Nome:* " + estado.nome.trim());
+    l.push("*Colação de grau:* " + (vaiC ? "vou" : "não vou"));
+    l.push("*Festa de formatura:* " + (vaiF ? "vou" : "não vou"));
+    if (acomp.length) {
+      l.push("");
+      l.push("*Acompanhantes (" + acomp.length + "):*");
+      acomp.forEach(function (a, i) {
+        const ev = a.colacao && a.festa ? "colação e festa" : a.colacao ? "só colação" : "só festa";
+        l.push((i + 1) + ". " + a.nome.trim() + " (" + ev + ")");
+      });
+    }
+    if (totC || totF) {
+      l.push("");
+      l.push("*Total na colação:* " + plural(totC, "pessoa", "pessoas"));
+      l.push("*Total na festa:* " + plural(totF, "pessoa", "pessoas"));
+    }
+    const recado = estado.recado.trim();
+    if (recado) {
+      l.push("");
+      l.push("*Recado:* " + recado);
+    }
+    return l.join("\n");
+  }
+
+  function linkWhatsApp(texto) {
+    const num = CONFIG.whatsapp.replace(/\D/g, "");
+    return "https://wa.me/" + num + "?text=" + encodeURIComponent(texto);
+  }
+
+  function atualizar() {
+    salvar();
+    enviar.href = linkWhatsApp(montarMensagem());
+    if (tentouEnviar) {
+      const erros = validar();
+      mostrarErros(erros);
+      if (!erros.some(function (e) { return e.msg; })) alerta.textContent = "";
+    }
+    if (!pronto.hidden) mensagemEl.textContent = montarMensagem();
+  }
+
+  function tentar(ev) {
+    tentouEnviar = true;
+    const erros = validar();
+    mostrarErros(erros);
+    const primeiro = erros.find(function (e) { return e.msg; });
+    if (primeiro) {
+      if (ev) ev.preventDefault();
+      const n = erros.filter(function (e) { return e.msg; }).length;
+      alerta.textContent = n === 1 ? "Falta 1 item: veja o campo destacado acima." : "Faltam " + n + " itens: veja os campos destacados acima.";
+      (primeiro.foco || primeiro.el).focus();
+      return false;
+    }
+    alerta.textContent = "";
+    return true;
+  }
+
+  enviar.addEventListener("click", function (ev) {
+    if (!tentar(ev)) return;
+    const texto = montarMensagem();
+    enviar.href = linkWhatsApp(texto);
+    mensagemEl.textContent = texto;
+    statusEl.textContent = "";
+    pronto.hidden = false;
+    setTimeout(function () { pronto.focus({ preventScroll: true }); pronto.scrollIntoView({ block: "nearest", behavior: "smooth" }); }, 50);
+  });
+
+  form.addEventListener("submit", function (ev) {
+    ev.preventDefault();
+    if (tentar(null)) enviar.focus();
+  });
+
+  document.getElementById("copiar").addEventListener("click", function () {
+    const texto = montarMensagem();
+    function selecionar() {
+      const r = document.createRange();
+      r.selectNodeContents(mensagemEl);
+      const s = window.getSelection();
+      s.removeAllRanges();
+      s.addRange(r);
+      statusEl.textContent = "Texto selecionado. Use copiar no seu aparelho.";
+    }
+    try {
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(texto).then(function () {
+          statusEl.textContent = "Mensagem copiada.";
+        }, selecionar);
+      } else {
+        selecionar();
+      }
+    } catch (e) { selecionar(); }
+  });
+
+  preencherCampos();
+  renderAcomps(null);
+  enviar.href = linkWhatsApp(montarMensagem());
+})();
+</script>
+</body>
+</html>
