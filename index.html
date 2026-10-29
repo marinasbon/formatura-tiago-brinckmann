@@ -240,7 +240,6 @@
       </li>
     </ol>
 
-    <p class="nota" id="nota-lacunas">Os horários e os locais ainda serão definidos. Assim que estiverem confirmados, eles aparecem aqui.</p>
     <a class="link" id="agenda" href="#" target="_blank" rel="noopener">Salvar 16 de janeiro na agenda do Google</a>
   </section>
   </div>
@@ -360,7 +359,6 @@ const CONFIG = {
   "use strict";
 
   /* ---------- Programação ---------- */
-  let temLacuna = false;
   document.querySelectorAll(".evento").forEach(function (li) {
     const ev = CONFIG.eventos[li.dataset.evento] || {};
     li.querySelectorAll("dd[data-campo]").forEach(function (dd) {
@@ -368,7 +366,6 @@ const CONFIG = {
       const valor = (ev[campo] || "").trim();
       dd.textContent = "";
       if (!valor) {
-        temLacuna = true;
         const l = document.createElement("span");
         l.className = "lacuna" + (campo === "local" ? " lacuna--longa" : "");
         const sr = document.createElement("span");
@@ -397,7 +394,6 @@ const CONFIG = {
       }
     });
   });
-  document.getElementById("nota-lacunas").hidden = !temLacuna;
 
   const agenda = new URL("https://calendar.google.com/calendar/render");
   agenda.searchParams.set("action", "TEMPLATE");
@@ -412,7 +408,7 @@ const CONFIG = {
     p.hidden = false;
   }
   if (CONFIG.whatsapp.trim()) {
-    document.getElementById("ajuda-envio").textContent = "O WhatsApp abre na conversa com o Tiago, com a mensagem pronta. É só tocar em enviar.";
+    document.getElementById("ajuda-envio").textContent = "O WhatsApp abre na conversa com o Tiago, com a mensagem pronta. É só clicar em enviar.";
   }
 
   /* ---------- Confirmação ---------- */
