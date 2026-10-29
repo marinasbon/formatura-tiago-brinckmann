@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Formatura de Tiago Brinckmann</title>
+<link rel="icon" type="image/svg+xml" href="favicon.svg">
 <meta name="description" content="Formatura em Direito pela PUCRS de Tiago Brinckmann, 16 de janeiro de 2027. Programação, traje e confirmação de presença.">
 <meta name="theme-color" content="#0E1B33">
 <link rel="canonical" href="https://marinasbon.github.io/formatura-tiago-brinckmann/">
@@ -35,6 +36,7 @@
     --tinta:#141B2B;
     --suave:#536075;
     --claro:#F1F4FA;
+    --dourado:#B08D57;    /* detalhe sutil, selo do rodapé e aviso */
     --serif-titulo:"Bodoni Moda","Bodoni 72","Didot",Georgia,serif;
     --serif:"Lora","Georgia","Times New Roman",serif;
     --sans:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
@@ -63,13 +65,25 @@
 
   .botao{display:inline-flex;align-items:center;justify-content:center;gap:.5rem;min-height:3.125rem;
     padding:.8rem 1.6rem;border-radius:999px;border:2px solid transparent;font:600 1.0625rem/1.2 var(--sans);
-    text-decoration:none;cursor:pointer;transition:background-color .15s,color .15s,border-color .15s}
+    text-decoration:none;cursor:pointer;transition:background-color .15s,color .15s,border-color .15s,box-shadow .18s ease,transform .18s ease}
   .botao--claro{background:var(--claro);color:var(--noite)}
   .botao--claro:hover{background:#fff}
   .botao--acento{background:var(--acento);color:#fff}
   .botao--acento:hover{background:var(--acento-escuro)}
   .botao--contorno{background:transparent;color:var(--acento);border-color:var(--acento)}
   .botao--contorno:hover{background:var(--papel)}
+  .botao-flutuante{display:none}
+  @media (max-width:767px){
+    .botao-flutuante{display:flex;position:fixed;left:1rem;right:1rem;bottom:1rem;z-index:40;
+      box-shadow:0 .5rem 1.5rem rgba(14,27,51,.28);
+      opacity:0;transform:translateY(1rem);pointer-events:none;transition:opacity .25s ease,transform .25s ease}
+    .botao-flutuante.visivel{opacity:1;transform:none;pointer-events:auto}
+  }
+  @media (hover:hover) and (prefers-reduced-motion:no-preference){
+    .botao:hover{transform:translateY(-2px);box-shadow:0 .6rem 1.2rem rgba(14,27,51,.22)}
+    .botao--claro:hover{box-shadow:0 .6rem 1.2rem rgba(14,27,51,.35)}
+  }
+  .botao:active{transform:none;box-shadow:none}
 
   /* ---------- Seções ---------- */
   .abertura{max-width:68rem;margin:0 auto;padding:4.5rem 1.5rem 4rem}
@@ -104,9 +118,8 @@
   .detalhes dd{margin:.125rem 0 0;font-weight:500}
   .detalhes dd a{color:var(--acento);text-underline-offset:.2em}
   .evento__aviso{margin:3.5rem 0 0;padding-left:.85rem;border-left:3px solid var(--acento);font-weight:500;max-width:50ch;display:flex;align-items:flex-start;gap:.6rem}
-  .evento__aviso-icone{flex:none;margin-top:.1rem;color:var(--acento)}
-  .lacuna{display:inline-block;vertical-align:bottom;height:1.5em;border-bottom:1.5px solid var(--tinta);width:6.5rem}
-  .lacuna--longa{width:min(15rem,100%)}
+  .evento__aviso-icone{flex:none;margin-top:.1rem;color:var(--dourado)}
+  .a-definir{font-family:var(--serif);font-style:italic;font-weight:400;color:var(--suave)}
   .nota{margin:2rem 0 0;color:var(--suave);max-width:58ch}
   .link{display:inline-block;margin-top:2.5rem;color:var(--acento);font-weight:600;text-underline-offset:.22em;text-decoration-thickness:1.5px}
   .link:hover{color:var(--acento-escuro)}
@@ -196,9 +209,14 @@
   .rodape p{margin:0}
   .rodape__termos{font-family:var(--serif);font-size:1.5rem;line-height:1.3}
   .rodape__local{margin-top:.5rem!important;color:var(--suave)}
-  .rodape__assinatura{margin-top:3rem!important;padding-top:.6rem;border-top:1.5px solid var(--tinta);
-    font-family:var(--serif);font-style:italic;font-size:1.375rem}
+  .rodape__assinatura-linha{margin-top:3rem!important;padding-top:.6rem;border-top:1.5px solid var(--tinta);
+    display:flex;align-items:center;gap:1rem}
+  .rodape__assinatura{font-family:var(--serif);font-style:italic;font-size:1.375rem}
   .rodape__cargo{color:var(--suave);font-size:.9375rem}
+  .rodape__selo{flex:none;width:3.25rem;height:3.25rem;border-radius:50%;border:1.5px solid var(--dourado);
+    display:flex;align-items:center;justify-content:center;font-family:var(--serif-titulo);font-style:italic;
+    font-size:1.5rem;color:var(--dourado)}
+  .rodape__selo::before{content:"§"}
   @media (min-width:960px){.rodape{padding-left:calc(1.5rem + 11.5rem)}}
 
   /* ---------- Movimento ---------- */
@@ -208,12 +226,15 @@
     .capa__nome span + span{animation-delay:.12s}
     .capa__curso,.capa__data,.capa__eventos,.capa .botao{animation:aparece .8s ease .45s both}
     .pronto{animation:aparece .35s ease both}
+    .reveal{opacity:0;transform:translateY(2.25rem);transition:opacity .7s ease,transform .7s cubic-bezier(.2,.7,.2,1)}
+    .reveal.em-vista{opacity:1;transform:none}
   }
   @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
   @keyframes surge{from{opacity:0;transform:translateY(6%)}to{opacity:1;transform:none}}
   @keyframes sobe{from{opacity:0;transform:translateY(.25em)}to{opacity:1;transform:none}}
   @keyframes aparece{from{opacity:0}to{opacity:1}}
 </style>
+<noscript><style>.reveal{opacity:1!important;transform:none!important}</style></noscript>
 </head>
 <body>
 
@@ -224,17 +245,17 @@
     <h1 class="capa__nome"><span>Tiago</span> <span>Brinckmann</span></h1>
     <p class="capa__data"><time datetime="2027-01-16">Sábado, 16 de janeiro de 2027</time></p>
     <p class="capa__eventos">Colação de grau e festa de formatura</p>
-    <a class="botao botao--claro" href="#confirmar">Confirmar presença</a>
+    <a class="botao botao--claro" href="#confirmar" id="btn-confirmar-capa">Confirmar presença</a>
   </div>
 </header>
 
 <main>
-  <div class="abertura">
+  <div class="abertura reveal">
     <p>Depois de muita doutrina, jurisprudência e Vade Mecum, chegou a hora de comemorar. Quero muito ter você comigo nesse dia.</p>
   </div>
 
   <div class="faixa">
-  <section class="secao" id="programacao" aria-labelledby="t-programacao">
+  <section class="secao reveal" id="programacao" aria-labelledby="t-programacao">
     <div class="secao__cab">
       <span class="secao__par" aria-hidden="true">§ 1º</span>
       <h2 id="t-programacao">A programação</h2>
@@ -249,7 +270,7 @@
           <div><dt><svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-7.58 7-12a7 7 0 1 0-14 0c0 4.42 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>Local</dt><dd data-campo="local"></dd></div>
         </dl>
         <p class="evento__aviso">
-          <svg class="evento__aviso-icone" aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.25 2"/></svg>
+          <svg class="evento__aviso-icone" aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4.5"/><circle cx="12" cy="16.3" r=".25" fill="currentColor" stroke="none"/><path d="M10.6 3.7 2.9 17.3a1.8 1.8 0 0 0 1.56 2.7h15.08a1.8 1.8 0 0 0 1.56-2.7L13.4 3.7a1.8 1.8 0 0 0-3.12 0Z"/></svg>
           <span>Chegue com antecedência: não há lugares marcados, a entrada é por ordem de chegada. Depois que a cerimônia começar, não será possível entrar até um novo intervalo.</span>
         </p>
       </li>
@@ -267,7 +288,7 @@
   </section>
   </div>
 
-  <section class="secao" id="traje" aria-labelledby="t-traje">
+  <section class="secao reveal" id="traje" aria-labelledby="t-traje">
     <div class="secao__cab">
       <span class="secao__par" aria-hidden="true">§ 2º</span>
       <h2 id="t-traje">O traje</h2>
@@ -296,7 +317,7 @@
   </section>
 
   <div class="faixa">
-    <section class="secao" id="confirmar" aria-labelledby="t-confirmar">
+    <section class="secao reveal" id="confirmar" aria-labelledby="t-confirmar">
       <div class="secao__cab">
         <span class="secao__par" aria-hidden="true">§ 3º</span>
         <h2 id="t-confirmar">Confirmação de presença</h2>
@@ -371,18 +392,23 @@
       <div class="contagem__item"><span class="contagem__num" id="cnt-seg">00</span><span class="contagem__rotulo">segundos</span></div>
     </div>
   </div>
-  <div class="rodape__texto">
+  <div class="rodape__texto reveal">
     <p class="rodape__termos">Nestes termos, aguardo a sua presença.</p>
     <p class="rodape__local">Porto Alegre, 16 de janeiro de 2027.</p>
-    <p class="rodape__assinatura">Tiago Brinckmann</p>
-    <p class="rodape__cargo">Bacharel em Direito pela PUCRS</p>
+    <div class="rodape__assinatura-linha">
+      <span class="rodape__selo" aria-hidden="true"></span>
+      <div>
+        <p class="rodape__assinatura">Tiago Brinckmann</p>
+        <p class="rodape__cargo">Bacharel em Direito pela PUCRS</p>
+      </div>
+    </div>
   </div>
 </footer>
 
 <script>
 /* =========================================================
    Informações para preencher quando estiverem definidas.
-   Deixe "" para mostrar a lacuna em branco.
+   Deixe "" para mostrar "a definir" no lugar.
    ========================================================= */
 const CONFIG = {
   whatsapp: "5551993475164", // número do Tiago com DDI e DDD, só dígitos. Ex.: "5551999999999"
@@ -405,11 +431,8 @@ const CONFIG = {
       dd.textContent = "";
       if (!valor) {
         const l = document.createElement("span");
-        l.className = "lacuna" + (campo === "local" ? " lacuna--longa" : "");
-        const sr = document.createElement("span");
-        sr.className = "sr";
-        sr.textContent = "a definir";
-        l.appendChild(sr);
+        l.className = "a-definir";
+        l.textContent = "a definir";
         dd.appendChild(l);
         return;
       }
@@ -763,7 +786,43 @@ const CONFIG = {
 
   atualizarContagem();
   intervaloContagem = setInterval(atualizarContagem, 1000);
+
+  /* ---------- Seções surgem ao rolar ---------- */
+  if ("IntersectionObserver" in window) {
+    const observadorRevelacao = new IntersectionObserver(function (entradas, obs) {
+      entradas.forEach(function (entrada) {
+        if (entrada.isIntersecting) {
+          entrada.target.classList.add("em-vista");
+          obs.unobserve(entrada.target);
+        }
+      });
+    }, { threshold: 0.15, rootMargin: "0px 0px -8% 0px" });
+    document.querySelectorAll(".reveal").forEach(function (el) { observadorRevelacao.observe(el); });
+  } else {
+    document.querySelectorAll(".reveal").forEach(function (el) { el.classList.add("em-vista"); });
+  }
+
+  /* ---------- Botão flutuante (celular) ---------- */
+  const btnFlutuante = document.getElementById("btn-confirmar-flutuante");
+  const btnCapa = document.getElementById("btn-confirmar-capa");
+  const secaoConfirmar = document.getElementById("confirmar");
+  if (btnFlutuante && btnCapa && secaoConfirmar && "IntersectionObserver" in window) {
+    let capaVisivel = true;
+    let confirmarVisivel = false;
+    const atualizarFlutuante = function () {
+      btnFlutuante.classList.toggle("visivel", !capaVisivel && !confirmarVisivel);
+    };
+    new IntersectionObserver(function (entradas) {
+      capaVisivel = entradas[0].isIntersecting;
+      atualizarFlutuante();
+    }).observe(btnCapa);
+    new IntersectionObserver(function (entradas) {
+      confirmarVisivel = entradas[0].isIntersecting;
+      atualizarFlutuante();
+    }).observe(secaoConfirmar);
+  }
 })();
 </script>
+<a class="botao botao--acento botao-flutuante" href="#confirmar" id="btn-confirmar-flutuante">Confirmar presença</a>
 </body>
 </html>
