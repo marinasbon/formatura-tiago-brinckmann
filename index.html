@@ -5,6 +5,20 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Formatura de Tiago Brinckmann</title>
 <meta name="description" content="Formatura em Direito pela PUCRS de Tiago Brinckmann, 16 de janeiro de 2027. Programação, traje e confirmação de presença.">
+<meta name="theme-color" content="#0E1B33">
+<link rel="canonical" href="https://marinasbon.github.io/formatura-tiago-brinckmann/">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://marinasbon.github.io/formatura-tiago-brinckmann/">
+<meta property="og:title" content="Formatura de Tiago Brinckmann">
+<meta property="og:description" content="Colação de grau e festa de formatura em Direito pela PUCRS, 16 de janeiro de 2027.">
+<meta property="og:image" content="https://marinasbon.github.io/formatura-tiago-brinckmann/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="pt_BR">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Formatura de Tiago Brinckmann">
+<meta name="twitter:description" content="Colação de grau e festa de formatura em Direito pela PUCRS, 16 de janeiro de 2027.">
+<meta name="twitter:image" content="https://marinasbon.github.io/formatura-tiago-brinckmann/og-image.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..700;1,6..96,400..700&family=Lora:ital,wght@0,400..700;1,400..700&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -85,7 +99,8 @@
   .evento > p{margin:0 0 1rem;color:var(--suave);max-width:52ch}
   .detalhes{margin:0;display:grid;grid-template-columns:minmax(0,1fr);gap:.75rem 2.5rem}
   @media (min-width:560px){.detalhes{grid-template-columns:auto minmax(0,1fr)}}
-  .detalhes dt{font-size:.875rem;font-weight:600;color:var(--suave)}
+  .detalhes dt{display:flex;align-items:center;gap:.4rem;font-size:.875rem;font-weight:600;color:var(--suave)}
+  .detalhes dt svg{flex:none}
   .detalhes dd{margin:.125rem 0 0;font-weight:500}
   .detalhes dd a{color:var(--acento);text-underline-offset:.2em}
   .evento__aviso{margin:2.25rem 0 0;padding-left:.85rem;border-left:3px solid var(--acento);font-weight:500;max-width:50ch;display:flex;align-items:flex-start;gap:.6rem}
@@ -101,11 +116,18 @@
   .traje__nome{margin:0;font-family:var(--serif-titulo);font-weight:500;font-size:clamp(2.5rem,6vw,3.5rem);line-height:1.05;letter-spacing:-.01em}
   .traje__onde{margin:.5rem 0 0;font-weight:600;color:var(--suave)}
   .traje__desc{margin:.75rem 0 0;color:var(--suave)}
+  .traje__opcoes{margin:1.25rem 0 0;display:grid;gap:1.25rem;grid-template-columns:1fr}
+  @media (min-width:560px){.traje__opcoes{grid-template-columns:1fr 1fr}}
+  .traje__opcao{display:flex;align-items:flex-start;gap:.75rem}
+  .traje__opcao-icone{flex:none;margin-top:.2rem;color:var(--acento)}
+  .traje__opcao-titulo{margin:0 0 .2rem;font-weight:600}
+  .traje__opcao p{margin:0;color:var(--suave)}
 
   /* Contagem regressiva */
   .contagem{display:flex;flex-wrap:wrap;gap:1rem 1.25rem}
   .contagem__item{display:flex;flex-direction:column;align-items:flex-start;min-width:4.5rem}
-  .contagem__num{font-family:var(--serif);font-weight:500;font-size:clamp(2.5rem,6vw,3.5rem);line-height:1;color:var(--acento)}
+  .contagem__num{font-family:var(--serif);font-weight:500;font-size:clamp(2.5rem,6vw,3.5rem);line-height:1;color:var(--acento);
+    font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1;display:inline-block;min-width:1.6em}
   .contagem__rotulo{margin-top:.35rem;font-size:.9375rem;font-weight:600;color:var(--suave);text-transform:uppercase;letter-spacing:.04em}
   .rodape__contagem{margin:0 0 3rem}
   .contagem__titulo{margin:0 0 1.1rem;font-size:.9375rem;font-weight:600;color:var(--suave);text-transform:uppercase;letter-spacing:.04em}
@@ -223,8 +245,8 @@
         <h3>Colação de grau</h3>
         <p>A cerimônia oficial em que recebo o grau de bacharel em Direito.</p>
         <dl class="detalhes">
-          <div><dt>Horário</dt><dd data-campo="horario"></dd></div>
-          <div><dt>Local</dt><dd data-campo="local"></dd></div>
+          <div><dt><svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.25 2"/></svg>Horário</dt><dd data-campo="horario"></dd></div>
+          <div><dt><svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-7.58 7-12a7 7 0 1 0-14 0c0 4.42 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>Local</dt><dd data-campo="local"></dd></div>
         </dl>
         <p class="evento__aviso">
           <svg class="evento__aviso-icone" aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.25 2"/></svg>
@@ -235,8 +257,8 @@
         <h3>Festa de formatura</h3>
         <p>A noite de celebração, com jantar e música.</p>
         <dl class="detalhes">
-          <div><dt>Horário</dt><dd data-campo="horario"></dd></div>
-          <div><dt>Local</dt><dd data-campo="local"></dd></div>
+          <div><dt><svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.25 2"/></svg>Horário</dt><dd data-campo="horario"></dd></div>
+          <div><dt><svg aria-hidden="true" viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21s7-7.58 7-12a7 7 0 1 0-14 0c0 4.42 7 12 7 12z"/><circle cx="12" cy="9" r="2.5"/></svg>Local</dt><dd data-campo="local"></dd></div>
         </dl>
       </li>
     </ol>
@@ -254,7 +276,23 @@
     <div class="traje">
       <p class="traje__nome">Esporte fino</p>
       <p class="traje__onde">Na colação de grau e na festa de formatura</p>
-      <p class="traje__desc">Para elas: vestido curto, midi ou longo, ou macacão. Para eles: blazer, camisa e alfaiataria. Sapato ou salto são bem-vindos.</p>
+      <div class="traje__opcoes">
+        <div class="traje__opcao">
+          <svg class="traje__opcao-icone" aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4a2 2 0 1 1 2 2c-.5 0-1-.2-1.4-.6"/><path d="M12 6v2"/><path d="M12 8l8 6a2 2 0 0 1-1.2 3.6H5.2A2 2 0 0 1 4 13.6z"/><path d="M4.5 16.5h15"/></svg>
+          <div>
+            <p class="traje__opcao-titulo">Para elas</p>
+            <p>Vestido curto, midi ou longo, ou macacão.</p>
+          </div>
+        </div>
+        <div class="traje__opcao">
+          <svg class="traje__opcao-icone" aria-hidden="true" viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4a2 2 0 1 1 2 2c-.5 0-1-.2-1.4-.6"/><path d="M12 6v2"/><path d="M12 8l8 6a2 2 0 0 1-1.2 3.6H5.2A2 2 0 0 1 4 13.6z"/><path d="M4.5 16.5h15"/></svg>
+          <div>
+            <p class="traje__opcao-titulo">Para eles</p>
+            <p>Blazer, camisa e alfaiataria.</p>
+          </div>
+        </div>
+      </div>
+      <p class="traje__desc">Sapato ou salto são bem-vindos.</p>
     </div>
   </section>
 
