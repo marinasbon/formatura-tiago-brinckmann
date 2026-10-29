@@ -7,7 +7,6 @@ Site de uma página (RSVP) para a formatura em Direito do Tiago Brinckmann, PUCR
 ## Estrutura
 
 - `index.html` — página inteira (estilo, markup e script).
-- `render.yaml` — Blueprint do Render para deploy como *Static Site*.
 
 ## Antes de publicar: preencha o `CONFIG`
 
@@ -26,16 +25,14 @@ const CONFIG = {
 
 Enquanto `horario`/`local` estiverem vazios, o site mostra uma lacuna ("a definir").
 
-## Deploy no Render (sem dormir)
+Depois de editar, só dar commit e push — o GitHub Pages republica automaticamente.
 
-Este é um **Static Site**, não um Web Service — no plano gratuito do Render, Static Sites ficam sempre ativos e não entram em modo de espera (diferente de Web Services free, que "dormem" após inatividade).
+## Deploy: GitHub Pages
 
-Passos:
+O site já está publicado via GitHub Pages, direto da branch `main`:
 
-1. Suba este repositório para o GitHub (veja abaixo).
-2. No [dashboard do Render](https://dashboard.render.com), clique em **New** → **Blueprint**.
-3. Conecte o repositório `formatura-tiago-brinckmann`. O Render vai detectar o `render.yaml` automaticamente.
-4. Confirme a criação — não precisa de build command nem de variáveis de ambiente.
-5. Em poucos segundos o site estará no ar em uma URL `https://formatura-tiago-brinckmann.onrender.com` (pode trocar o nome/domínio depois nas configurações do serviço).
+**https://marinasbon.github.io/formatura-tiago-brinckmann/**
 
-Alternativa sem Blueprint: **New** → **Static Site**, aponte para o repo, deixe o *Build Command* vazio e o *Publish Directory* como `./`.
+Por ser um site puramente estático, servido pela CDN do GitHub, não existe "modo de espera" — fica sempre ativo, de graça. O único requisito é que o repositório seja público (necessário para Pages grátis).
+
+Qualquer `git push` na branch `main` atualiza o site automaticamente em 1–2 minutos.
