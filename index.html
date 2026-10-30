@@ -102,7 +102,7 @@
   .secao{max-width:68rem;margin:0 auto;padding:4.5rem 1.5rem;display:grid;grid-template-columns:minmax(0,1fr)}
   .secao__cab{display:flex;align-items:baseline;gap:.75rem;margin-bottom:1.75rem}
   .secao__par{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--acento);white-space:nowrap}
-  .secao h2{position:relative;width:fit-content;margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4.4vw,2.75rem);line-height:1.1;letter-spacing:-.01em}
+  .secao h2{position:relative;width:fit-content;max-width:100%;min-width:0;margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4.4vw,2.75rem);line-height:1.1;letter-spacing:-.01em}
   .secao h2::after{content:"";position:absolute;left:0;bottom:-.35rem;height:1px;width:100%;background:var(--dourado);opacity:.35}
   @media (prefers-reduced-motion:no-preference){
     .secao h2::after{width:0;transition:width .9s cubic-bezier(.2,.7,.2,1) .15s}
@@ -356,7 +356,7 @@
 
       <form class="form" id="rsvp" novalidate>
         <div class="campo">
-          <label for="nome">Seu nome completo</label>
+          <label for="nome">Nome completo</label>
           <input id="nome" name="nome" type="text" autocomplete="name" aria-describedby="nome-erro" required>
           <p class="erro" id="nome-erro" hidden></p>
         </div>
