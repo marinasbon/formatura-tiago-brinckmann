@@ -49,8 +49,9 @@
   :focus-visible{outline:3px solid var(--acento);outline-offset:3px}
 
   /* ---------- Barra de progresso ---------- */
-  .barra-progresso{position:fixed;top:0;left:0;right:0;height:3px;background:transparent;z-index:50;pointer-events:none}
-  .barra-progresso span{display:block;height:100%;width:0;background:var(--dourado)}
+  .barra-progresso{position:fixed;top:0;left:0;right:0;height:10px;z-index:50;pointer-events:none;overflow:hidden;
+    -webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);background:rgba(241,244,250,.08)}
+  .barra-progresso span{position:absolute;left:0;bottom:0;display:block;height:3px;width:0;background:var(--dourado)}
   @media (prefers-reduced-motion:no-preference){.barra-progresso span{transition:width .12s linear}}
 
   /* ---------- Confete ---------- */
