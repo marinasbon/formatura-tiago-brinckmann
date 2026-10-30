@@ -165,9 +165,19 @@
 
   /* ---------- Confirmação ---------- */
   .faixa{background:var(--nevoa)}
-  .form{display:grid;gap:2rem;max-width:40rem}
-  .campo label,.grupo legend{display:block;font-weight:600;margin-bottom:.5rem}
+  .form{display:grid;gap:1.25rem;max-width:40rem}
+  .campo label,.grupo legend{display:flex;align-items:center;gap:.6rem;font-weight:600;margin-bottom:.5rem}
   .opcional{font-weight:400;color:var(--suave)}
+  .form__bloco{background:var(--papel);border:1px solid var(--linha);border-radius:.875rem;padding:1.5rem 1.5rem 1.6rem}
+  fieldset.form__bloco{padding:1.5rem 1.5rem 1.6rem}
+  .form__passo{display:inline-flex;align-items:center;justify-content:center;width:1.625rem;height:1.625rem;
+    border-radius:50%;background:var(--acento);color:#fff;font-size:.8125rem;font-weight:700;flex:none}
+  .form__icone{color:var(--acento);flex:none}
+  .form__fixo{display:flex;position:fixed;left:50%;bottom:1.25rem;z-index:40;
+    opacity:0;visibility:hidden;transform:translate(-50%,.75rem);pointer-events:none;
+    transition:opacity .25s ease,transform .25s ease,visibility .25s}
+  .form__fixo.visivel{opacity:1;visibility:visible;transform:translate(-50%,0);pointer-events:auto}
+  .form__fixo .botao{box-shadow:0 .6rem 1.4rem rgba(14,27,51,.3)}
   .campo input,.campo textarea{width:100%;font:inherit;color:var(--tinta);background:var(--papel);
     border:1px solid var(--linha);border-bottom:2px solid var(--tinta);border-radius:.375rem .375rem 0 0;padding:.7rem .85rem}
   .campo textarea{resize:vertical;min-height:6rem}
@@ -358,14 +368,14 @@
       <p class="secao__intro">Diga se você vai à colação, à festa ou aos dois, e quem vai com você. A confirmação chega ao Tiago por WhatsApp.<span id="prazo" hidden> Confirme até <strong></strong>.</span></p>
 
       <form class="form" id="rsvp" novalidate>
-        <div class="campo">
-          <label for="nome">Nome completo</label>
+        <div class="campo form__bloco">
+          <label for="nome"><span class="form__passo" aria-hidden="true">1</span>Nome completo</label>
           <input id="nome" name="nome" type="text" autocomplete="name" aria-describedby="nome-erro" required>
           <p class="erro" id="nome-erro" hidden></p>
         </div>
 
-        <fieldset class="grupo" id="grupo-colacao" aria-describedby="colacao-erro">
-          <legend>Você vai à colação de grau?</legend>
+        <fieldset class="grupo form__bloco" id="grupo-colacao" aria-describedby="colacao-erro">
+          <legend><span class="form__passo" aria-hidden="true">2</span><svg class="form__icone" aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 4.5 2.5 9l9.5 4.5L21.5 9 12 4.5Z"/><path d="M6 11.2V16c0 1.1 2.7 2.5 6 2.5s6-1.4 6-2.5v-4.8"/><path d="M21.5 9v5.2"/></svg>Você vai à colação de grau?</legend>
           <div class="opcoes">
             <label class="opcao"><input type="radio" name="colacao" value="sim"><span>Vou</span></label>
             <label class="opcao"><input type="radio" name="colacao" value="nao"><span>Não vou</span></label>
@@ -373,8 +383,8 @@
           <p class="erro" id="colacao-erro" hidden></p>
         </fieldset>
 
-        <fieldset class="grupo" id="grupo-festa" aria-describedby="festa-erro">
-          <legend>Você vai à festa de formatura?</legend>
+        <fieldset class="grupo form__bloco" id="grupo-festa" aria-describedby="festa-erro">
+          <legend><span class="form__passo" aria-hidden="true">3</span><svg class="form__icone" aria-hidden="true" viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M5.5 3h5l-.8 7.3a1.9 1.9 0 0 1-3.4 0L5.5 3Z"/><path d="M8 12.5V21"/><path d="M5 21h6"/><path d="M15.5 6.5 17 3l1.5 3.5-1.5 1.5-1.5-1.5Z"/><path d="M17 8v13"/><path d="M14 21h6"/></svg>Você vai à festa de formatura?</legend>
           <div class="opcoes">
             <label class="opcao"><input type="radio" name="festa" value="sim"><span>Vou</span></label>
             <label class="opcao"><input type="radio" name="festa" value="nao"><span>Não vou</span></label>
@@ -382,15 +392,15 @@
           <p class="erro" id="festa-erro" hidden></p>
         </fieldset>
 
-        <fieldset class="grupo">
-          <legend>Acompanhantes</legend>
+        <fieldset class="grupo form__bloco">
+          <legend><span class="form__passo" aria-hidden="true">4</span>Acompanhantes</legend>
           <p class="ajuda">Inclua cada pessoa que vai com você e marque a quais eventos ela vai.</p>
           <ol class="acomps" id="acomps"></ol>
           <button type="button" class="botao botao--contorno" id="add-acomp">Adicionar acompanhante</button>
         </fieldset>
 
-        <div class="campo">
-          <label for="recado">Recado para o Tiago <span class="opcional">(opcional)</span></label>
+        <div class="campo form__bloco">
+          <label for="recado"><span class="form__passo" aria-hidden="true">5</span><span>Recado para o Tiago <span class="opcional">(opcional)</span></span></label>
           <textarea id="recado" name="recado" rows="3"></textarea>
         </div>
 
@@ -437,6 +447,11 @@
     </div>
   </div>
 </footer>
+
+<a class="botao botao--acento botao-flutuante" href="#confirmar" id="btn-confirmar-flutuante">Confirmar presença</a>
+<div class="form__fixo" id="form-fixo">
+  <button type="button" class="botao botao--acento" id="enviar-fixo">Enviar confirmação</button>
+</div>
 
 <script>
 /* =========================================================
@@ -904,8 +919,31 @@ const CONFIG = {
       atualizarFlutuante();
     }).observe(secaoConfirmar);
   }
+
+  /* ---------- Botão de enviar fixo (rolando o formulário) ---------- */
+  const formFixo = document.getElementById("form-fixo");
+  const btnEnviarFixo = document.getElementById("enviar-fixo");
+  const formRsvp = document.getElementById("rsvp");
+  const btnEnviarReal = document.getElementById("enviar");
+  if (formFixo && btnEnviarFixo && formRsvp && btnEnviarReal && "IntersectionObserver" in window) {
+    let formVisivel = false;
+    let enviarRealVisivel = false;
+    const atualizarFormFixo = function () {
+      formFixo.classList.toggle("visivel", formVisivel && !enviarRealVisivel);
+    };
+    new IntersectionObserver(function (entradas) {
+      formVisivel = entradas[0].isIntersecting;
+      atualizarFormFixo();
+    }).observe(formRsvp);
+    new IntersectionObserver(function (entradas) {
+      enviarRealVisivel = entradas[0].isIntersecting;
+      atualizarFormFixo();
+    }).observe(btnEnviarReal);
+    btnEnviarFixo.addEventListener("click", function () {
+      btnEnviarReal.click();
+    });
+  }
 })();
 </script>
-<a class="botao botao--acento botao-flutuante" href="#confirmar" id="btn-confirmar-flutuante">Confirmar presença</a>
 </body>
 </html>
