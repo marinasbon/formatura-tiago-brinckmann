@@ -102,7 +102,7 @@
   .secao__cab{display:flex;align-items:baseline;gap:.75rem;margin-bottom:1.75rem}
   .secao__par{font-family:var(--serif);font-style:italic;font-size:1.5rem;color:var(--acento);white-space:nowrap}
   .secao h2{position:relative;width:fit-content;margin:0;font-family:var(--serif);font-weight:500;font-size:clamp(2rem,4.4vw,2.75rem);line-height:1.1;letter-spacing:-.01em}
-  .secao h2::after{content:"";position:absolute;left:0;bottom:-.35rem;height:2px;width:100%;background:var(--dourado)}
+  .secao h2::after{content:"";position:absolute;left:0;bottom:-.35rem;height:1px;width:100%;background:var(--dourado);opacity:.35}
   @media (prefers-reduced-motion:no-preference){
     .secao h2::after{width:0;transition:width .9s cubic-bezier(.2,.7,.2,1) .15s}
     .secao.em-vista h2::after{width:100%}
@@ -152,11 +152,9 @@
 
   /* Contagem regressiva */
   .contagem{display:flex;flex-wrap:wrap;gap:1rem 1.25rem}
-  .contagem__item{display:flex;flex-direction:column;align-items:flex-start;min-width:4.5rem;perspective:220px}
+  .contagem__item{display:flex;flex-direction:column;align-items:flex-start;min-width:4.5rem}
   .contagem__num{font-family:var(--serif);font-weight:500;font-size:clamp(2.5rem,6vw,3.5rem);line-height:1;color:var(--acento);
-    font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1;display:inline-block;min-width:1.6em;
-    transform-style:preserve-3d;backface-visibility:hidden}
-  @media (prefers-reduced-motion:no-preference){.contagem__num.pisca{animation:flip-num .5s ease}}
+    font-variant-numeric:tabular-nums;font-feature-settings:"tnum" 1;display:inline-block;min-width:1.6em}
   .contagem__rotulo{margin-top:.35rem;font-size:.9375rem;font-weight:600;color:var(--suave);text-transform:uppercase;letter-spacing:.04em}
   .rodape__contagem{margin:0 0 3rem}
   .contagem__titulo{margin:0 0 1.5rem;font-size:.9375rem;font-weight:600;color:var(--suave);text-transform:uppercase;letter-spacing:.04em}
@@ -260,7 +258,6 @@
   @keyframes surge{from{opacity:0;transform:translateY(6%)}to{opacity:1;transform:none}}
   @keyframes sobe{from{opacity:0;transform:translateY(.25em)}to{opacity:1;transform:none}}
   @keyframes aparece{from{opacity:0}to{opacity:1}}
-  @keyframes flip-num{0%{transform:rotateX(0deg);opacity:1}45%{transform:rotateX(-90deg);opacity:.25}55%{transform:rotateX(-90deg);opacity:.25}100%{transform:rotateX(0deg);opacity:1}}
   @keyframes brilho{0%{transform:translateX(-120%) rotate(8deg)}18%{transform:translateX(120%) rotate(8deg)}100%{transform:translateX(120%) rotate(8deg)}}
   @keyframes cair-confete{0%{transform:translateY(0) rotate(0deg);opacity:1}100%{transform:translateY(100vh) rotate(540deg);opacity:0}}
 </style>
@@ -821,15 +818,6 @@ const CONFIG = {
 
   function doisDigitos(n) { return String(n).padStart(2, "0"); }
 
-  function definirNumero(el, valor) {
-    const texto = String(valor);
-    if (el.textContent === texto) return;
-    el.textContent = texto;
-    el.classList.remove("pisca");
-    void el.offsetWidth;
-    el.classList.add("pisca");
-  }
-
   function atualizarContagem() {
     const diff = DATA_FORMATURA.getTime() - Date.now();
     if (diff <= 0) {
@@ -839,10 +827,10 @@ const CONFIG = {
       return;
     }
     const seg = Math.floor(diff / 1000);
-    definirNumero(elDias, Math.floor(seg / 86400));
-    definirNumero(elHoras, doisDigitos(Math.floor((seg % 86400) / 3600)));
-    definirNumero(elMin, doisDigitos(Math.floor((seg % 3600) / 60)));
-    definirNumero(elSeg, doisDigitos(seg % 60));
+    elDias.textContent = Math.floor(seg / 86400);
+    elHoras.textContent = doisDigitos(Math.floor((seg % 86400) / 3600));
+    elMin.textContent = doisDigitos(Math.floor((seg % 3600) / 60));
+    elSeg.textContent = doisDigitos(seg % 60);
   }
 
   atualizarContagem();
